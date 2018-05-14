@@ -1,0 +1,170 @@
+nRF5 SDK for Thread v0.10.0
+------------------------
+Release Date: Week 27, 2017
+  
+This release is an experimental release and should only be used to explore 
+and try out the Thread features available on the nRF52840 chip.
+
+The Thread examples in this pack are built on top of the OpenThread stack:
+https://github.com/openthread/openthread
+
+Software components and application examples for MDK, peripherals, BLE, and NFC
+have been inherited from nRF5 SDK v.13.0.0.
+
+New features:
+- Initial release of Thread/BLE dynamic multiprotocol solution which allows for concurrent operation of 
+  Thread and BLE utilizing OpenThread and SoftDevice stacks.
+- Examples demonstrating dynamic multiprotocol operation of Thread and BLE:
+	- BLE NUS (Nordic UART Service) + Thread MTD running CoAP Client
+	- BLE Proximity Profile + Thread FTD running CoAP Server
+	- BLE Eddystone + Thread FTD running CoAP Server 
+	- BLE HRS Profile + Thread FTD running CoAP Server + FreeRTOS
+	- BLE/Thread dynamic multiprotocol template application
+- Example demonstrating the use of FreeRTOS with OpenThread.
+- Support for IAR compiler for OpenThread stack and all example applications.
+
+Changes:
+- Updated pre-built OpenThread libraries. The update includes support for Thread/BLE dynamic multiprotocol solution and implements workaround for nRF52840 Anomaly no.110:  		  http://infocenter.nordicsemi.com/topic/com.nordic.infocenter.nrf52840.EngA.errata/anomaly_840_110.html
+- Updated Thread Border Router.
+- Advertising interval of BLE Eddystone Beacon Example has been modified to work with Timeslot API.
+
+Limitations:
+- Thread/BLE dynamic multiprotocol solution does not support Thread Sleepy End Device role.
+- FreeRTOS does not support tickless mode.
+
+Compatible tools:
+- nrfutil-3.0.0 or newer
+- nRF Thread Topology Monitor (nRF TTM) v0.8.0-1.alpha
+- RaspPi-Thread-Border-Router-Demo v0.10.0-1.alpha
+These tools are available from https://www.nordicsemi.com/thread#Downloads
+
+Supported SoftDevices for multiprotocol support:
+- S140 v5.0.0-2.alpha
+
+The following OpenThread commit has been used to generate pre-built Thread
+stack libraries, and for testing and verification:
+- https://github.com/openthread/openthread/commit/6a15261b
+
+The following wpantund commit has been used as part of the Thread 
+Border Router solution, and for testing and verification:
+https://github.com/openthread/wpantund/commit/d8259642
+
+The following toolchains have been used for testing and verification of the
+Thread examples:
+- GCC: GCC ARM Embedded 4.9 2015q3
+- IAR: IAR Workbench 7.60.2
+
+Supported boards:
+- PCA10056
+
+
+========================================================
+
+nRF5 SDK for Thread v0.9.0
+------------------------
+Release Date: Week 19, 2017
+  
+This release is an experimental release and should only be used to explore 
+and try out the Thread features available on the nRF52840 chip.
+
+The Thread examples in this pack are built on top of the OpenThread stack
+https://github.com/openthread/openthread
+
+Software components and application examples for MDK, peripherals, BLE, and NFC
+have been inherited from nRF5 SDK v.13.0.0.
+
+New features:
+- Examples demonstrating multiprotocol support and switching between BLE peripheral
+  and Thread FTD and MTD roles.
+- Thread Border Router has been updated to support Wi-Fi link connectivity.
+- Support for DNS64 in Thread Border Router.
+- Support for DNSv6 client for Thread nodes.
+- Added hardware acceleration for SHA256 and AES-ECB cryptographic procedures
+  using ARM CryptoCell (hardware acceleration for ECC was already introduced in v0.8.0).
+
+Changes:
+- Updated Thread Cloud CoAP Client example to use DNS instead of hardcoded IPv6 address of the
+  cloud.
+- Updated pre-built OpenThread libraries.
+
+Compatible tools:
+- nrfutil-2.1.0dev2
+- nRF Thread Topology Monitor (nRF TTM) v0.8.0-1.alpha
+- RaspPi-Thread-Border-Router-Demo v0.9.0-1.alpha
+These tools are available from https://www.nordicsemi.com/thread#Downloads
+
+Supported SoftDevices for multiprotocol support:
+- S140 v5.0.0-2.alpha
+
+The following OpenThread commit has been used to generate pre-built Thread
+stack libraries, and for testing and verification:
+https://github.com/openthread/openthread/commit/030efba
+
+The following wpantund commit has been used as part of the Thread 
+Border Router solution, and for testing and verification:
+- https://github.com/openthread/wpantund/commit/c2cf75a
+
+The following wpantund patch has been applied to add native commissioner
+functionality:
+- https://github.com/NordicSemiconductor/thread_border_router_feeds/blob/master/wpantund/patches
+
+The following toolchains have been used for testing and verification of the
+Thread examples:
+- GCC: GCC ARM Embedded 4.9 2015q3
+
+Supported boards:
+- PCA10056
+
+========================================================
+
+nRF5 SDK for Thread v0.8.0
+------------------------
+Release Date: Week 10, 2017
+  
+This release is an experimental release and should only be used to explore 
+and try out the Thread features available on the nRF52840 chip.
+
+Highlights:
+- Pre-built OpenThread stack: https://github.com/openthread/openthread
+- An example which demonstrates a minimal OpenThread application that 
+  enables user interaction through built-in CLI
+- Examples presenting interactions between different Thread roles: 
+  Full Thread Device (Thread Router/REED), 
+  Minimal Thread Device(Minimal End Device/Sleepy End Device),
+  using OpenThread's built-in CoAP protocol
+- An example which demonstrates how to run a secure Device Firmware Update 
+  (DFU) process over a Thread network
+- Demo Thread Border Router
+- wpantund (Wireless Network Interface Daemon for Low-Power Wireless SoCs) 
+  used as part of the Demo Thread Border Router solution: 
+  https://github.com/openthread/wpantund
+- A Network Co-Processor(NCP) application - nRF52840 serves as a connectivity
+  chip and communicates with wpantund present on the application processor
+- An example demonstrating interaction between nodes running OpenThread and 
+  a remote cloud service through the Demo Thread Border Router
+- An example demonstrating Thread native commissioning via NFC with use of 
+  OpenThread and Demo Thread Border Router
+- Thread Topology Monitor PC tool
+- Software components and application examples for MDK, peripherals, 
+  and NFC inherited from nRF5 SDK v.13.0.0
+
+  
+The following OpenThread commit has been used to generate pre-built Thread
+stack libraries and for testing and verification:
+- https://github.com/openthread/openthread/commit/de48acf
+
+The following OpenThread commit has been used to generate a patch:
+- https://github.com/NordicSemiconductor/openthread/commit/7c77739
+
+The following wpantund commit has been used as part of the Demo Thread 
+Border Router solution and for testing and verification:
+- https://github.com/openthread/wpantund/commit/7c07366
+
+The following wpantund commit has been used to generate a patch:
+- https://github.com/NordicSemiconductor/wpantund/commit/786606d
+
+The following toolchains have been used for testing and verification:
+- GCC: GCC ARM Embedded 4.9 2015q3
+
+Supported boards:
+- PCA10056
